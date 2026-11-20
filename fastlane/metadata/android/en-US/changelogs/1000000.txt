@@ -1,0 +1,11 @@
+First public release:
+- Forward SMS via custom SMTP server (SSL/TLS)
+- Dual-SIM device support
+- Contact name resolution
+- Automatic retries with backoff and stuck-send recovery
+- Import existing messages
+- Manual sends
+- Blocklist and allowlist filtering (regex)
+- Message history with search
+- English, Russian and Chinese
+- No ads, no tracking, no backend

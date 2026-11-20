@@ -1,0 +1,37 @@
+SMS to Email forwards incoming SMS messages to your own email address via a custom SMTP server, so you can read your texts on any device.
+
+<b>How it works</b><br>
+Every incoming message is stored on the device and sent as an email through the SMTP server you configure. Senders can be matched to contact names. If a send fails — no network, server down, wrong credentials — the message stays in a queue and is retried with a backoff, and a periodic recovery sweep picks up anything stuck.
+
+<b>Features</b>
+<ul>
+<li>Forward SMS via custom SMTP server (SSL/TLS)</li>
+<li>Dual-SIM device support</li>
+<li>Contact name resolution</li>
+<li>Automatic retries with backoff and stuck-send recovery</li>
+<li>Import existing messages</li>
+<li>Manual sends</li>
+<li>Blocklist and allowlist filtering (regex)</li>
+<li>Message history with search</li>
+<li>No ads, no tracking, no backend</li>
+</ul>
+
+<b>Supported languages</b>
+<ul>
+<li>English</li>
+<li>Русский</li>
+<li>中文 (AI-generated translation)</li>
+</ul>
+
+<b>Privacy</b><br>
+The app has no backend and no account: messages travel directly from your device to the email provider you configure. The only network calls it makes are sending your own emails over your own SMTP connection. SMTP credentials are encrypted with the Android Keystore. No advertising, no tracking, no analytics.
+
+<b>Permissions</b>
+<ul>
+<li>SMS — to capture incoming messages as they arrive and import messages already in your inbox</li>
+<li>Show notifications — optional, for the sticky notification</li>
+<li>Read contacts — optional, for contact name resolution</li>
+<li>Read phone state — optional, to identify which SIM received the message</li>
+<li>Ignore battery optimizations — optional but recommended, for reliable background sending and retries</li>
+<li>Schedule exact alarms (Android 12+) — optional, for precise retry wake-ups; on Android 12-14 you grant it via a separate Alarms & reminders toggle, and on Android 15+ the battery exemption above grants it automatically</li>
+</ul>

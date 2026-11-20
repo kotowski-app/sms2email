@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="smtp_auth_failed">身份验证失败。请检查邮箱和密码，或确保已启用授权码（应用专用密码）。</string>
+    <string name="smtp_timeout">连接超时。请检查服务器地址和端口，然后重试。</string>
+    <string name="smtp_network_error">网络错误。请检查您的网络连接。</string>
+    <string name="smtp_unknown">发送邮件时发生未知错误。</string>
+    <string name="smtp_dns_error">DNS 解析失败。请检查服务器地址。</string>
+    <string name="smtp_connection_error">连接被拒绝或超时。请检查防火墙和端口设置。</string>
+    <string name="smtp_socket_error">无法访问网络。请检查您的网络连接。</string>
+    <string name="smtp_ssl_port_error">SSL/TLS 错误。请确保您的服务器支持 TLS。</string>
+
+    <string name="smtp_enh_5_1_1">收件人邮箱地址不存在。</string>
+    <string name="smtp_enh_5_1_2">找不到收件人域名。</string>
+    <string name="smtp_enh_5_1_3">收件人邮箱地址格式无效。</string>
+    <string name="smtp_enh_5_1_4">收件人邮箱地址由多个邮箱共用。</string>
+    <string name="smtp_enh_5_1_6">收件人邮箱地址已更改。</string>
+
+    <string name="smtp_enh_4_2_1">收件人邮箱暂时不可用。</string>
+    <string name="smtp_enh_5_2_2">收件人邮箱已满。</string>
+    <string name="smtp_enh_5_2_3">您的消息或附件过大。</string>
+
+    <string name="smtp_enh_4_3_1">收件人邮件服务器磁盘空间不足。</string>
+    <string name="smtp_enh_5_3_4">消息过大，超出服务器网络限制。</string>
+
+    <string name="smtp_enh_4_4_1">收件人服务器无响应。请稍后重试。</string>
+    <string name="smtp_enh_4_4_7">消息超时；无法访问收件人服务器。</string>
+
+    <string name="smtp_enh_5_7_0">邮件因收件人的安全策略被拒绝。</string>
+    <string name="smtp_enh_5_7_1">邮件被阻止：发件人未授权（反垃圾邮件或 DMARC 失败）。</string>
+    <string name="smtp_enh_5_7_2">禁止展开邮件列表。</string>
+    <string name="smtp_enh_5_7_8">身份验证凭据无效。</string>
+    <string name="smtp_enh_5_7_9">身份验证失败（需要授权码或双因素认证问题）。</string>
+    <string name="smtp_enh_5_7_11">需要加密（TLS），但收件人不支持。</string>
+
+    <string name="smtp_220">服务器已就绪。</string>
+    <string name="smtp_454">安全连接（TLS）暂时不可用。</string>
+    <string name="smtp_501">连接参数无效。</string>
+    <string name="smtp_523">需要加密，但协商失败。</string>
+    <string name="smtp_530">需要安全连接；未启用 STARTTLS。</string>
+    <string name="smtp_538">所请求的身份验证方法需要加密。</string>
+
+    <string name="smtp_235">身份验证成功。</string>
+    <string name="smtp_334">已收到服务器的身份验证质询。</string>
+    <string name="smtp_432">邮箱密码已过期或需要更新。</string>
+    <string name="smtp_534">服务器拒绝登录：安全方法过于薄弱。</string>
+    <string name="smtp_535">身份验证失败：邮箱或密码无效。</string>
+
+    <string name="smtp_421">邮件服务器暂时不可用。请稍后重试。</string>
+    <string name="smtp_431">服务器空间或内存不足。</string>
+    <string name="smtp_442">传输过程中连接中断。</string>
+    <string name="smtp_450">收件人邮箱暂时忙碌。</string>
+    <string name="smtp_451">发生临时本地服务器错误。请稍后重试。</string>
+    <string name="smtp_452">服务器或收件人邮箱存储空间不足。</string>
+    <string name="smtp_455">发生临时服务器参数错误。</string>
+    <string name="smtp_471">发生本地反垃圾邮件过滤器错误。</string>
+
+    <string name="smtp_500">服务器无法识别该命令。</string>
+    <string name="smtp_502">服务器不支持所请求的功能。</string>
+    <string name="smtp_503">命令顺序错误。</string>
+    <string name="smtp_504">不支持该命令参数。</string>
+    <string name="smtp_510">收件人邮箱地址无效。</string>
+    <string name="smtp_511">收件人邮箱地址无效。</string>
+    <string name="smtp_512">找不到收件人域名（DNS 错误）。</string>
+    <string name="smtp_513">地址类型不正确或包含语法错误。</string>
+    <string name="smtp_521">邮件服务器已设置为拒绝收到的邮件。</string>
+    <string name="smtp_541">收件人服务器拒绝了该邮件（垃圾邮件过滤器）。</string>
+    <string name="smtp_550">收件人不存在，或邮件被阻止。</string>
+    <string name="smtp_551">收件人不是本地的；转发失败。</string>
+    <string name="smtp_552">收件人邮箱已满，或消息过大。</string>
+    <string name="smtp_553">收件人邮箱地址语法无效。</string>
+    <string name="smtp_554">邮件被拒绝（垃圾邮件、策略限制或黑名单）。</string>
+    <string name="smtp_555">无法识别邮件参数。</string>
+    <string name="smtp_556">收件人域名不接受邮件。</string>
+    <string name="smtp_571">消息被严格策略或垃圾邮件过滤器拒绝。</string>
+
+    <string name="smtp_transient_fallback">服务器临时错误（%d）。请稍后重试。</string>
+    <string name="smtp_permanent_fallback">服务器永久错误（%d）。邮件无法发送。</string>
+
+</resources>

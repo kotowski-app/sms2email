@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ===================================================================== -->
+    <!-- Generic SMTP errors (used by SmtpErrorMapper for non-code failures) -->
+    <!-- ===================================================================== -->
+    <string name="smtp_auth_failed">Authentication failed. Check your email and password, or make sure app passwords are enabled.</string>
+    <string name="smtp_timeout">The connection timed out. Check the hostname and port, then try again.</string>
+    <string name="smtp_network_error">Network error. Check your internet connection.</string>
+    <string name="smtp_unknown">An unexpected error occurred while sending email.</string>
+    <string name="smtp_dns_error">DNS resolution failed. Check the server hostname.</string>
+    <string name="smtp_connection_error">Connection refused or timed out. Check the firewall and port settings.</string>
+    <string name="smtp_socket_error">Network unreachable. Check your internet connection.</string>
+    <string name="smtp_ssl_port_error">SSL/TLS error. Make sure your server supports TLS.</string>
+
+    <!-- ===================================================================== -->
+    <!-- SMTP Enhanced Status Codes (RFC 3463) - X.Y.Z format                -->
+    <!-- ===================================================================== -->
+
+    <!-- 1.X.X – Addressing -->
+    <string name="smtp_enh_5_1_1">The recipient email address does not exist.</string>
+    <string name="smtp_enh_5_1_2">The recipient domain could not be found.</string>
+    <string name="smtp_enh_5_1_3">The recipient email address has an invalid format.</string>
+    <string name="smtp_enh_5_1_4">The recipient email address is shared by multiple mailboxes.</string>
+    <string name="smtp_enh_5_1_6">The recipient email address has moved.</string>
+
+    <!-- 2.X.X – Mailbox -->
+    <string name="smtp_enh_4_2_1">The recipient mailbox is temporarily disabled.</string>
+    <string name="smtp_enh_5_2_2">The recipient mailbox is full.</string>
+    <string name="smtp_enh_5_2_3">Your message or attachment is too large.</string>
+
+    <!-- 3.X.X – Mail System -->
+    <string name="smtp_enh_4_3_1">The recipient email server is out of disk space.</string>
+    <string name="smtp_enh_5_3_4">Message too large for server network limits.</string>
+
+    <!-- 4.X.X – Network / Routing -->
+    <string name="smtp_enh_4_4_1">The recipient server is not responding. Try again later.</string>
+    <string name="smtp_enh_4_4_7">The message timed out; the recipient server was unreachable.</string>
+
+    <!-- 7.X.X – Security / Policy -->
+    <string name="smtp_enh_5_7_0">Email rejected due to the recipient\'s security policy.</string>
+    <string name="smtp_enh_5_7_1">Email blocked: sender unauthorized (anti-spam or DMARC failure).</string>
+    <string name="smtp_enh_5_7_2">Mailing list expansion is forbidden.</string>
+    <string name="smtp_enh_5_7_8">Authentication credentials are invalid.</string>
+    <string name="smtp_enh_5_7_9">Authentication failed (app password required or 2FA issue).</string>
+    <string name="smtp_enh_5_7_11">Encryption (TLS) is required but not supported by the recipient.</string>
+
+    <!-- ===================================================================== -->
+    <!-- SMTP 3-Digit Codes (RFC 5321 / 3207 / 4954)                         -->
+    <!-- ===================================================================== -->
+
+    <!-- TLS (RFC 3207) -->
+    <string name="smtp_220">Server is ready.</string>
+    <string name="smtp_454">Secure connection (TLS) is temporarily unavailable.</string>
+    <string name="smtp_501">Invalid connection parameters.</string>
+    <string name="smtp_523">Encryption is required but negotiation failed.</string>
+    <string name="smtp_530">A secure connection is required; STARTTLS is not enabled.</string>
+    <string name="smtp_538">Encryption is required for the requested authentication method.</string>
+
+    <!-- Authentication (RFC 4954) -->
+    <string name="smtp_235">Authentication successful.</string>
+    <string name="smtp_334">Server authentication challenge received.</string>
+    <string name="smtp_432">The email password has expired or needs updating.</string>
+    <string name="smtp_534">Server rejected login: the security method is too weak.</string>
+    <string name="smtp_535">Authentication failed: invalid email or password.</string>
+
+    <!-- Transient failures (4xx) -->
+    <string name="smtp_421">The email server is temporarily unavailable. Try again later.</string>
+    <string name="smtp_431">The server has run out of space or memory.</string>
+    <string name="smtp_442">The connection was dropped during transmission.</string>
+    <string name="smtp_450">The recipient mailbox is temporarily busy.</string>
+    <string name="smtp_451">A temporary local server error occurred. Try again later.</string>
+    <string name="smtp_452">The server or recipient mailbox has run out of storage.</string>
+    <string name="smtp_455">A temporary server parameter error occurred.</string>
+    <string name="smtp_471">A local anti-spam filter error occurred.</string>
+
+    <!-- Permanent failures (5xx) -->
+    <string name="smtp_500">The command is not recognized by the server.</string>
+    <string name="smtp_502">The server does not support the requested feature.</string>
+    <string name="smtp_503">Bad sequence of commands.</string>
+    <string name="smtp_504">The command parameter is not supported.</string>
+    <string name="smtp_510">The recipient email address is invalid.</string>
+    <string name="smtp_511">The recipient email address is invalid.</string>
+    <string name="smtp_512">The recipient domain cannot be found (DNS error).</string>
+    <string name="smtp_513">The address type is incorrect or contains a syntax error.</string>
+    <string name="smtp_521">The mail server is configured to reject incoming emails.</string>
+    <string name="smtp_541">The recipient server rejected the email (spam filter).</string>
+    <string name="smtp_550">The recipient does not exist or the email was blocked.</string>
+    <string name="smtp_551">The recipient is not local; forwarding failed.</string>
+    <string name="smtp_552">The recipient mailbox is full or the message is too large.</string>
+    <string name="smtp_553">The recipient email address is syntactically invalid.</string>
+    <string name="smtp_554">The email was rejected (spam, policy restriction, or blacklist).</string>
+    <string name="smtp_555">The email parameters are not recognized.</string>
+    <string name="smtp_556">The recipient domain does not accept emails.</string>
+    <string name="smtp_571">The message was refused by a strict policy or spam filter.</string>
+
+    <!-- Fallback buckets for unmapped codes -->
+    <string name="smtp_transient_fallback">Temporary server error (%d). Please try again later.</string>
+    <string name="smtp_permanent_fallback">Permanent server error (%d). The email could not be sent.</string>
+
+</resources>

@@ -1,0 +1,1 @@
+protocol=smtp; type=transport; class=app.kotowski.sms2email.service.FakeSmtpTransport;

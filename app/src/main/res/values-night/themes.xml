@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Sms2Email" parent="Theme.AppCompat.NoActionBar" />
+</resources>

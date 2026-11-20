@@ -1,0 +1,43 @@
+tmp/
+local/
+notes.txt
+
+# Gradle
+.gradle/
+build/
+*/build/
+
+# IDE
+.kotlin/
+.idea/
+*.iml
+*.ipr
+*.iws
+.local/
+*.swp
+*.swo
+
+# Android
+local.properties
+captures/
+.externalNativeBuild
+.cxx
+
+# Key material — never commit
+*.keystore
+*.jks
+release-keystore.properties
+app_config.properties
+
+# Build artifacts
+*.apk
+*.apks
+*.aab
+*.ap_
+*.dex
+
+# Logs
+*.log
+
+# Misc
+*.bak

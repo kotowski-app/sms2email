@@ -1,0 +1,780 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- IMPORTANT: Do not remove comments explaining function of a string unless you also remove the string itself -->
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Non-translatable strings -->
+    <!-- The display name of the app shown on the home screen; also the JSON email subject, the fallback for the auto subject prefix when the device name is unavailable, part of the test email subject, the dashboard top-bar title, the forwarding notification's content title, and the onboarding welcome screen text -->
+    <string name="app_name" translatable="false">SMS to Email</string>
+    <!-- The filename used for exported settings backup files; not shown to the user directly -->
+    <string name="settings_backup_filename" translatable="false">sms2email_backup.json</string>
+    <!-- Appearance (Settings screen) -->
+    <!-- Section header in the Settings screen above the theme and language pickers -->
+    <string name="settings_section_appearance">Appearance</string>
+    <!-- Floating label of the theme dropdown in the Settings screen Appearance section -->
+    <string name="settings_theme_label">Theme</string>
+    <!-- Option of the theme dropdown: force the light theme -->
+    <string name="settings_theme_light">Light</string>
+    <!-- Option of the theme dropdown: force the dark theme -->
+    <string name="settings_theme_dark">Dark</string>
+    <!-- Floating label of the language dropdown in the Settings screen Appearance section and in the onboarding wizard -->
+    <string name="settings_language_label">Language</string>
+    <!-- Option of the language dropdown (always English — not translated) -->
+    <string name="settings_language_english" translatable="false">English</string>
+    <!-- Option of the language dropdown (always Russian — not translated) -->
+    <string name="settings_language_russian" translatable="false">Русский</string>
+    <!-- Option of the language dropdown (always Chinese — not translated) -->
+    <string name="settings_language_chinese" translatable="false">中文</string>
+    <!-- Option of the theme and language dropdowns: follow the system setting -->
+    <string name="settings_system_default">System default</string>
+
+    <!-- Permissions (shared across Dashboard, Settings, Setup Wizard) -->
+    <!-- Title of the card or screen that lists the app's required and optional permissions -->
+    <string name="permissions_title">Permissions</string>
+    <!-- Label for the SMS permission -->
+    <string name="permissions_sms">SMS</string>
+    <!-- Description explaining why the SMS permission is needed: the app must read incoming messages to forward them by email -->
+    <string name="permissions_sms_desc">Required to receive and read messages.</string>
+    <!-- Label for the Notifications permission, and section heading in Settings for the notification preferences (the persistent forwarding indicator) -->
+    <string name="permissions_notifications">Notifications</string>
+    <!-- Description explaining that the notification permission keeps the SMS forwarding service running reliably in the background -->
+    <string name="permissions_notifications_desc">Required to keep the app running reliably in the background.</string>
+    <!-- Label for the Contacts permission (READ_CONTACTS), optional; used to resolve sender phone numbers to contact names in email subjects, and section heading in Settings for contact-related preferences (the Resolve Contacts toggle) -->
+    <string name="permissions_contacts">Contacts</string>
+    <!-- Description explaining that granting Contacts permission lets the app show contact names (e.g. "Mom") instead of raw phone numbers in forwarded emails -->
+    <string name="permissions_contacts_desc">Allows the app to display contact names instead of phone numbers.</string>
+    <!-- Label for the Phone permission (READ_PHONE_STATE), optional on multi-SIM devices; used to identify which SIM card received each SMS -->
+    <string name="permissions_phone">Phone</string>
+    <!-- Description explaining that the Phone permission is the only way Android allows apps to discover SIM card naming information -->
+    <string name="permissions_phone_desc">Allows the app to display SIM cards. This information is not discoverable without the Phone permission.</string>
+    <!-- Label for the Battery optimization exclusion permission, required so the system doesn't kill the app's background forwarding service -->
+    <string name="permissions_battery">Background Battery Usage</string>
+    <!-- Description explaining that disabling battery optimization prevents the phone from suspending the app while it's running in the background -->
+    <string name="permissions_battery_desc">Prevents your phone from closing or pausing the app in the background.</string>
+    <!-- Shown as a toast when the user taps a permanently denied permission, directing them to the system app settings screen to manually grant it; the flow continues in the app after the return (a settings toggle needs one more tap there, the other rows activate themselves) -->
+    <string name="permissions_permanently_denied">Opening app settings. Please grant the permission there, and come back to the app to continue.</string>
+    <!-- Accessibility label of the check icon shown next to a permission in the onboarding permissions list after the user has granted it -->
+    <string name="permissions_granted">Granted</string>
+    <!-- Label of the permission auto-reset row in the Dashboard Permissions card (shown on Android 11+) and in the setup wizard's permissions step (wrapped in the recommended suffix), and title of the confirmation dialog before opening the system auto-reset settings -->
+    <string name="permissions_auto_reset">Turn off \"Manage app if unused\"</string>
+    <!-- Body text of the confirmation dialog shown before opening the system permission auto-reset settings screen -->
+    <string name="permissions_auto_reset_dialog_message">Android automatically removes permissions if you don\'t open the app for a while. On the next screen, turn off the option labeled \"Manage app if unused\", \"Pause app activity if unused\", or \"Remove permissions if app isn\'t used\". If you don\'t see this toggle, look under Permissions. Exact wording and toggle location may vary by device manufacturer and Android version.</string>
+    <!-- Confirm button in the dialog that takes the user to the Android App Info settings screen -->
+    <string name="permissions_auto_reset_dialog_open_settings">Open Settings</string>
+    <!-- Short description for the auto-reset permission row in setup wizard -->
+    <string name="permissions_auto_reset_desc">Prevents Android from revoking permissions when the app isn\'t used for a while.</string>
+
+    <!-- Email config (shared: setup wizard, settings screen and edit form, summary card)
+         Ordered as shown in the edit form, top to bottom (the wizard-only strings
+         slotted where the wizard shows them). -->
+    <!-- Section heading in Settings for the SMTP configuration preferences (host, protocol, port, username, password), the onboarding wizard's SMTP step heading, and the email config summary card's SMTP block heading -->
+    <string name="email_config_section_smtp">SMTP Settings</string>
+    <!-- Label for the SMTP server hostname field, shared by the setup wizard, the settings edit form and the settings summary card -->
+    <string name="email_config_host">Server Hostname</string>
+    <!-- Label for the SMTP security protocol field (STARTTLS / Implicit TLS), shared by the setup wizard, the settings edit form and the settings summary card -->
+    <string name="email_config_protocol">Security</string>
+    <!-- Label for the STARTTLS SMTP security protocol option, shown as a segmented button in Settings and onboarding -->
+    <string name="email_config_smtp_starttls" translatable="false">STARTTLS</string>
+    <!-- Label for the Implicit TLS SMTP security protocol option (always English — technical term, not translated) -->
+    <string name="email_config_smtp_implicit_tls" translatable="false">Implicit TLS</string>
+    <!-- Label for the SMTP port number field, shared by the setup wizard, the settings edit form and the settings summary card; auto-set based on selected protocol -->
+    <string name="email_config_port">Port</string>
+    <!-- Label for the SMTP username field, shared by the setup wizard, the settings edit form and the settings summary card -->
+    <string name="email_config_username">Username</string>
+    <!-- Label for the SMTP login password field, shared by the setup wizard, the settings edit form and the settings summary card (masked in the card) -->
+    <string name="email_config_password">Password</string>
+    <!-- Accessibility label for the eye icon that toggles the password field to visible text, shared by the onboarding and the Settings email edit form -->
+    <string name="email_config_show_password">Show password</string>
+    <!-- Accessibility label for the eye icon that toggles the password field back to hidden dots, shared by the onboarding and the Settings email edit form -->
+    <string name="email_config_hide_password">Hide password</string>
+    <!-- Helper text below the password field explaining that public email providers require an app-specific password, not the account's regular login password -->
+    <string name="email_config_smtp_password_hint">For Gmail, Outlook, Yahoo, and other public providers, you must use an app-specific password, not your account password.</string>
+    <!-- Button that tests the SMTP connection with the entered credentials; must succeed before the user can proceed to the next onboarding step -->
+    <string name="email_config_smtp_test">Test Connection</string>
+    <!-- Heading of the onboarding wizard's sender/recipient step (the 4th of 5 wizard screens), section header of the email config edit screen, and heading of the Settings email config summary card -->
+    <string name="email_config_sender_title">Email Settings</string>
+    <!-- Label for the recipient email field - the email address where forwarded SMS messages will be delivered; shared by the setup wizard, the settings edit form and the settings summary card -->
+    <string name="email_config_dest_email">Recipient Email</string>
+    <!-- Label for the optional recipient display name field - the name that appears in the "To" field of forwarded emails; shared by the setup wizard, the settings edit form and the settings summary card -->
+    <string name="email_config_dest_name">Recipient Name</string>
+    <!-- Label for the sender email field - the SMTP account address that forwarded emails appear to come from; shared by the setup wizard, the settings edit form and the settings summary card -->
+    <string name="email_config_sender_email">Sender Email</string>
+    <!-- Label for the optional sender display name field - the name that appears in the "From" field of forwarded emails; shared by the setup wizard, the settings edit form and the settings summary card -->
+    <string name="email_config_sender_name">Sender Name</string>
+    <!-- Toggle label in Settings and in the onboarding wizard sender step that enables automatic subject prefix using the device's display name (e.g. "Pixel 7a") instead of a custom string -->
+    <string name="email_config_auto_subject_prefix">Automatic Subject Prefix</string>
+    <!-- Description beneath the auto subject prefix toggle explaining that the device name will be used as the email subject prefix -->
+    <string name="email_config_auto_subject_prefix_desc">Use the device name as the subject prefix.</string>
+    <!-- Label for the optional custom subject prefix text field; when auto mode is off, the user can type a custom prefix that appears in brackets at the start of each forwarded email subject; unlike the name fields, the "(Optional)" suffix is part of the value, not composed via optional_suffix -->
+    <string name="email_config_subject_prefix">Custom Subject Prefix (Optional)</string>
+    <!-- Button that sends a full test email to the configured recipient to verify the end-to-end email forwarding setup works -->
+    <string name="email_config_send_test_email">Send Test Email</string>
+    <!-- Success message shown in the test-result toast when the SMTP connection test or the test email succeeds, and the test button's success result state label -->
+    <string name="email_config_test_success">Success</string>
+    <!-- Accessible label of the test button while a run is in flight; the spinner replaces the label, so it carries the accessibility text -->
+    <string name="email_config_test_testing">Testing…</string>
+    <!-- Toast shown when the config was edited while the test was running, so the stale result is discarded and the invalid icon shows -->
+    <string name="email_config_test_invalidated">Settings were changed while the test was running</string>
+    <!-- Toast shown when the user finishes onboarding or saves the email settings while required fields are still missing or invalid -->
+    <string name="email_config_incomplete_config">Enter required fields to finish setup</string>
+    <!-- Title of the warning dialog shown when the user saves the email config while the test email has not succeeded -->
+    <string name="settings_email_untested_title">Save untested settings?</string>
+    <!-- Body of the warning dialog shown when the user saves the email config while the test email has not succeeded -->
+    <string name="settings_email_untested_body">The test email has not succeeded yet.</string>
+    <!-- Confirm button of the untested-settings warning dialog that commits the email config despite the missing or failed tests -->
+    <string name="settings_email_save_anyway">Save anyway</string>
+
+    <!-- Email subject/body construction (internal, never shown in the UI) -->
+    <!-- Email subject template when a subject prefix is configured and no SIM suffix is needed; first %s = subject prefix (device name or custom text), second %s = sender display name (contact name or phone number) -->
+    <string name="subject_template" formatted="false">[%s] SMS from %s</string>
+    <!-- Email subject template when both a subject prefix AND a SIM suffix are configured; first %s = subject prefix, second %s = sender display name, third %s = SIM suffix (e.g. " on T-Mobile") -->
+    <string name="subject_template_with_sim" formatted="false">[%s] SMS from %s %s</string>
+    <!-- Email subject template when no subject prefix is configured and no SIM suffix is needed; %s = sender display name (contact name or phone number) -->
+    <string name="subject_template_no_prefix" formatted="false">SMS from %s</string>
+    <!-- Email subject template when no subject prefix is configured but a SIM suffix is present; first %s = sender display name, second %s = SIM suffix (e.g. " on T-Mobile") -->
+    <string name="subject_template_no_prefix_with_sim" formatted="false">SMS from %s %s</string>
+    <!-- SIM suffix appended to email subjects on multi-SIM devices; %s = SIM carrier name, e.g. " on T-Mobile" -->
+    <string name="email_subject_sim_suffix" formatted="false">on %s</string>
+    <!-- Subject of the test email; %s = the app name ("SMS to Email") -->
+    <string name="test_email_subject">Test Email from %s App</string>
+    <!-- The entire body of the test email confirming the SMTP configuration -->
+    <string name="email_test_body_confirmation">If you received this, your SMTP settings are configured correctly.</string>
+
+    <!-- Onboarding -->
+    <!-- Tagline shown on the first onboarding (welcome) screen beneath the app name and icon, summarizing the app's purpose -->
+    <string name="onboarding_welcome_subtitle">SMS to Email with no hassle</string>
+    <!-- Title shown on the final onboarding screen (the 5th of 5 wizard screens) when the user enters it, accompanied by a checkmark icon; the wizard's Done enables forwarding, so the message is the same for a first run and a re-run -->
+    <string name="onboarding_done_message">Congratulations! Forwarding is set up and enabled.</string>
+    <!-- Error toast shown when the user tries to proceed without filling in required fields or running the connection test first -->
+    <string name="onboarding_enter_fields_test">Enter required fields and test first</string>
+    <!-- Error toast shown when the user tries to proceed from the permissions step without granting all required permissions -->
+    <string name="onboarding_grant_required">Grant required permissions to proceed</string>
+    <!-- Title of the warning dialog shown when proceeding past the permissions step while recommended permissions are still not granted -->
+    <string name="onboarding_permissions_missing_warning_title">Recommended permissions</string>
+    <!-- Text of the warning dialog shown when proceeding past the permissions step while recommended permissions are still not granted; %s = the missing permission names, one per line -->
+    <string name="onboarding_permissions_missing_warning_text">The following permissions are not granted:\n\n%s\n\nIf you proceed, the app will not work reliably in the background.</string>
+    <!-- Button label in the onboarding permissions step that opens the system dialog to grant the highlighted permission -->
+    <string name="onboarding_grant">Grant</string>
+    <!-- Button on the welcome screen that lets the user bypass the Setup Wizard and go straight to the dashboard (triggers a confirmation dialog), and the confirm button of that skip confirmation dialog and of the recommended-permissions warning dialog -->
+    <string name="onboarding_skip">Skip</string>
+    <!-- Detail text of the confirmation dialog shown when the user taps Skip, asking them to confirm they want to exit the Setup Wizard (the dialog has no title) -->
+    <string name="onboarding_skip_confirm">Skip Setup Wizard?</string>
+    <!-- Info text in the skip confirmation dialog explaining that the Setup Wizard can be reopened later from the dashboard -->
+    <string name="onboarding_skip_info">You can run the Setup Wizard later from the main dashboard.</string>
+
+    <!-- Scam Warning -->
+    <!-- Title of the scam warning screen, displayed prominently as a critical security alert -->
+    <string name="scam_warning_title">WARNING</string>
+    <!-- Section heading for the card explaining what the app does (reads all SMS including OTPs and forwards them to email) -->
+    <string name="scam_warning_what">What This App Does</string>
+    <!-- Body text of the "What This App Does" card, warning the user that the app reads ALL incoming SMS including banking codes, password resets, and private messages, and forwards them to a configured email address -->
+    <string name="scam_warning_reads_sms">This app reads ALL incoming SMS messages on your phone, including banking OTP codes, password resets, and private messages, and forwards them to an email address configured by you.</string>
+    <!-- Section heading for the card warning that if someone else told the user to install this app, it is likely a scam -->
+    <string name="scam_warning_scam_alert">YOU ARE BEING SCAMMED IF…</string>
+    <!-- Body text of the scam alert card, explaining that scammers trick victims into installing SMS-forwarding apps to intercept banking codes and steal money -->
+    <string name="scam_warning_scam_text">…someone asked you to install this app. Scammers try to get access to your SMS messages so they can intercept your banking codes or other data to steal your money.</string>
+    <!-- Section heading for the card advising the user what actions to take if they suspect they are being scammed -->
+    <string name="scam_warning_what_to_do">What You Should Do</string>
+    <!-- Body text advising the user to stop communicating with the person who asked them to install the app, uninstall the app, and contact someone trusted in real life; mentions AI voice and face impersonation -->
+    <string name="scam_warning_contact">Stop talking to this person immediately. Scammers impersonate friends, relatives, bank representatives, and government officials, often by using AI to fake their voices and faces. Do not trust them: uninstall this app and reach out to a trusted person in real life.</string>
+    <!-- Shown beneath the Proceed button during the mandatory countdown timer; %d = number of seconds remaining before the button becomes enabled -->
+    <plurals name="scam_warning_timer">
+        <item quantity="one">You can continue in %d second.</item>
+        <item quantity="other">You can continue in %d seconds.</item>
+    </plurals>
+    <!-- Label of the button that becomes enabled after the 20-second countdown, allowing the user to proceed past the scam warning -->
+    <string name="scam_warning_proceed">Proceed at My Own Risk</string>
+
+    <!-- Dashboard -->
+    <!-- Label for the master toggle switch on the dashboard that turns SMS forwarding on or off, and name of the Android notification channel for the app's foreground service notification -->
+    <string name="sms_forwarding">SMS Forwarding</string>
+    <!-- Description of the notification channel, shown in the system notification settings -->
+    <string name="notification_channel_desc">Shows when SMS forwarding is active</string>
+    <!-- Status text shown beneath the forwarding toggle when SMS forwarding is active and the app is listening for incoming messages, and content text of the persistent forwarding notification -->
+    <string name="dashboard_status_listening">Listening for incoming SMS…</string>
+    <!-- Status text shown beneath the forwarding toggle when SMS forwarding is turned off -->
+    <string name="dashboard_status_disabled">Disabled</string>
+    <!-- Title of the confirmation dialog shown when turning off SMS Forwarding while messages are still waiting to be sent -->
+    <string name="dashboard_stop_forwarding_title">Turn off SMS Forwarding?</string>
+    <!-- Body of the turn-off confirmation dialog; %d = number of messages in the queue, waiting or in flight (count-neutral phrasing, no plurals needed) -->
+    <string name="dashboard_stop_forwarding_confirm">Messages queued: %d. Turning off forwarding will stop the queue. After re-enabling, you can re-send from History.</string>
+    <!-- Confirm button in the turn-off confirmation dialog that stops forwarding and parks the waiting messages -->
+    <string name="dashboard_stop_forwarding_turn_off">Turn off</string>
+    <!-- Title of the SIM Cards card on the dashboard that lists the names of active SIM cards on multi-SIM devices, and section heading in Settings for the SIM card display preferences -->
+    <string name="sim_cards">SIM Cards</string>
+    <!-- Accessibility label for the wand/stars icon on the dashboard toolbar that re-opens the Setup Wizard -->
+    <string name="dashboard_setup_wizard">Setup Wizard</string>
+    <!-- Title of the confirmation dialog shown when the user taps the Setup Wizard icon, asking if they want to restart the onboarding flow -->
+    <string name="dashboard_setup_wizard_confirm">Launch the Setup Wizard?</string>
+    <!-- Status badge shown next to a permission in the Permissions card when the permission is not required for core functionality but adds optional features -->
+    <string name="dashboard_permission_optional">Optional</string>
+    <!-- Status badge shown next to a recommended permission in the Permissions card (same info icon as Optional); keeping it granted keeps background forwarding reliable -->
+    <string name="dashboard_permission_recommended">Recommended</string>
+    <!-- Status badge shown next to a permission in the Permissions card when the permission has not been granted yet; tapping it opens the grant dialog -->
+    <string name="dashboard_permission_missing">Missing</string>
+    <!-- Toast shown when the user taps the blinking connectivity indicator icon in the dashboard top bar, and that icon's accessibility label; shown when the device has no internet connection -->
+    <string name="no_internet">No Internet</string>
+    <!-- Shown in the dashboard top bar; %s = the app version name (e.g. "1.0.0") -->
+    <string name="version_prefix">Version %s</string>
+
+    <!-- Queue -->
+    <!-- Label of the Dashboard button that navigates to the Queue screen, which shows only the in-flight messages (PENDING, SENDING, RETRYING); the screen top bar uses queue_title_count -->
+    <string name="queue_title">Queue</string>
+    <!-- Top bar title of the Queue screen; %d = exact total of in-flight messages (the list shows a loaded window, not the whole queue) -->
+    <string name="queue_title_count">Queue (%d)</string>
+    <!-- Empty state text shown on the Queue screen when there are no messages waiting to be forwarded -->
+    <string name="queue_empty">No messages waiting</string>
+    <!-- Content description of the top bar icon on the Queue screen that sends all queued messages now; triggers a confirmation dialog -->
+    <string name="queue_forward_all_content_desc">Send all now</string>
+    <!-- Title in the confirmation dialog when tapping "Send all now"; %d = total number of queued messages that will be sent -->
+    <plurals name="queue_forward_all_confirm">
+        <item quantity="one">Send all %d message now?</item>
+        <item quantity="other">Send all %d messages now?</item>
+    </plurals>
+    <!-- Button label in multi-select mode on the Queue screen that parks the selected in-flight messages as ignored (they move to the History) -->
+    <string name="queue_cancel_selected">Cancel</string>
+    <!-- Title of the confirmation dialog when cancelling the selected queued messages -->
+    <string name="queue_cancel_selected_title">Cancel Messages</string>
+    <!-- Confirmation dialog when cancelling selected messages from the Queue; %d = number of messages to park as ignored -->
+    <plurals name="queue_cancel_confirm">
+        <item quantity="one">Cancel %d selected message? It will be marked as ignored and can be re-sent from History.</item>
+        <item quantity="other">Cancel %d selected messages? They will be marked as ignored and can be re-sent from History.</item>
+    </plurals>
+    <!-- Content description of the Cancel All icon in the Queue toolbar; triggers a confirmation dialog -->
+    <string name="queue_cancel_all_content_desc">Cancel all queued messages</string>
+    <!-- Title of the confirmation dialog shown when the user taps the Cancel All icon in the Queue toolbar -->
+    <string name="queue_cancel_all_title">Cancel All</string>
+    <!-- Body of the Cancel All confirmation dialog; %d = total number of queued messages that will be parked as ignored -->
+    <plurals name="queue_cancel_all_confirm">
+        <item quantity="one">Cancel all %d queued message? It will be marked as ignored and can be re-sent from History.</item>
+        <item quantity="other">Cancel all %d queued messages? They will be marked as ignored and can be re-sent from History.</item>
+    </plurals>
+
+    <!-- Search -->
+    <!-- Placeholder text in the search bar on the History and Queue screens, and that search field's accessibility label -->
+    <string name="sms_search_hint">Search messages</string>
+    <!-- Empty state shown when the search query returns no matching messages on the History or Queue screen -->
+    <string name="sms_search_no_results">No messages match your search</string>
+
+    <!-- History -->
+    <!-- Label of the Dashboard button that navigates to the History screen, which shows a complete log of all processed SMS messages regardless of their forwarding status; the screen top bar uses history_title_count -->
+    <string name="history_title">History</string>
+    <!-- Top bar title of the History screen; %d = exact total of the history scope (in-flight queue rows are excluded; the list shows a loaded window, not the whole table) -->
+    <string name="history_title_count">History (%d)</string>
+    <!-- Empty state text shown on the History screen when no SMS messages have been processed yet -->
+    <string name="history_no_sms_yet">No SMS messages yet</string>
+    <!-- Button in the History empty state (shown when no messages exist yet) that opens the Import dialog for selecting a time range of existing phone SMS messages to import into the app -->
+    <string name="history_import_btn">Import Existing Messages</string>
+    <!-- Status label for messages that have been successfully forwarded via email -->
+    <string name="history_status_sent">Forwarded</string>
+    <!-- Status label showing when a message was forwarded; %s = the timestamp (date and time) of the successful forward -->
+    <string name="history_status_forwarded_at">Forwarded at %s</string>
+    <!-- Status label for messages that are queued and waiting to be forwarded -->
+    <string name="history_status_pending">Pending</string>
+    <!-- Status label for messages that were received while SMS Forwarding was turned off -->
+    <string name="history_status_ignored">Ignored</string>
+    <!-- Status label for messages that were manually imported from the phone's existing SMS but have not yet been forwarded -->
+    <string name="history_status_imported">Imported</string>
+    <!-- Status label for messages currently being processed and sent by the EmailWorker background task, and the accessibility label of the send spinner on the SMS detail screen while a send is in flight -->
+    <string name="history_status_sending">Sending</string>
+    <!-- Status label for messages that failed after exhausting all retry attempts; also the test button's result icon accessibility label when a run fails -->
+    <string name="history_status_failed">Failed</string>
+    <!-- Status label for messages that failed a send attempt and are scheduled to retry with exponential backoff -->
+    <string name="history_status_retrying">Retrying</string>
+    <!-- Status label for retrying messages showing the remaining wait time; %s = formatted duration like "1h 23m 45s" -->
+    <string name="history_status_retrying_in">Retrying in %s</string>
+    <!-- Status label for messages whose retry is delayed because the device currently has no internet connection -->
+    <string name="history_status_waiting_for_internet">Waiting for Internet</string>
+    <!-- Label shown for messages that were received on a SIM card that is no longer present in the device -->
+    <string name="history_unknown_sim">Missing SIM</string>
+    <!-- Title of the confirmation dialog shown when the user taps the Clear History button in the History toolbar -->
+    <string name="history_clear_title">Clear SMS History</string>
+    <!-- Body text in the clear history confirmation dialog; warns that only the app's internal history will be deleted, not the actual SMS on the phone -->
+    <string name="history_clear_confirm">Delete all SMS history? Messages still in the queue are not deleted. This will not delete the messages on the phone.</string>
+    <!-- Confirmation button in the clear history dialog that deletes all SMS records from the app's internal history -->
+    <string name="history_clear_confirm_btn">Delete All</string>
+    <!-- Title of the dialog shown after the import process finishes successfully -->
+    <string name="history_import_complete">Import Complete</string>
+    <!-- Shown in the import result summary; %d = number of messages that were newly imported into the app -->
+    <string name="history_imported">Imported: %d</string>
+    <!-- Shown in the import result summary; %d = number of messages that were skipped because they already exist in the app's history -->
+    <string name="history_skipped">Skipped: %d</string>
+    <!-- Shown in the import result summary; %d = number of messages that encountered an error during import -->
+    <string name="history_errors">Errors: %d</string>
+    <!-- Title of the error dialog shown when the import process fails entirely -->
+    <string name="history_import_failed">Import Failed</string>
+    <!-- Error message shown when the user tries to import messages without granting the SMS permission -->
+    <string name="history_import_no_sms_permission">Grant the SMS permission and try again.</string>
+    <!-- Title of the progress dialog shown while the app is importing messages from the phone's SMS store -->
+    <string name="history_importing">Importing…</string>
+    <!-- Progress text during import; %1$d = current message number being processed, %2$d = total number of messages to process -->
+    <plurals name="history_importing_progress">
+        <item quantity="one">Importing %1$d of %2$d message…</item>
+        <item quantity="other">Importing %1$d of %2$d messages…</item>
+    </plurals>
+    <!-- Accessibility label for the import icon button in the History toolbar -->
+    <string name="history_import_content_desc">Import SMS</string>
+    <!-- Accessibility label for the clear history icon button in the History toolbar -->
+    <string name="history_clear_content_desc">Clear History</string>
+    <!-- Title of the auto-cleanup banner on the History screen -->
+    <string name="history_auto_clear_on">Auto-clear is on</string>
+    <!-- Description under the auto-cleanup banner title; %1$s = the retention period label (e.g. "30 days") -->
+    <string name="history_auto_clear_desc">Records older than %1$s are deleted automatically. Messages not yet forwarded are kept until forwarded or failed. You can change this in Settings.</string>
+    <!-- Button in the auto-clear warning banner that manually triggers the cleanup task immediately to delete expired messages now -->
+    <string name="history_run_cleanup_now">Run Now</string>
+    <!-- Title of the dialog shown after the manual cleanup task completes -->
+    <string name="history_cleanup_complete">Cleanup Complete</string>
+    <!-- Detail line of the cleanup result dialog; %d = number of messages that were deleted by the cleanup -->
+    <string name="history_cleanup_deleted">Deleted: %d</string>
+    <!-- Button in multi-select mode on the History screen that deletes the selected messages from the app's history (not from the phone) -->
+    <string name="history_delete_selected">Delete Selected</string>
+    <!-- Title of the confirmation dialog shown when the user deletes messages from multi-select mode -->
+    <string name="history_delete_selected_title">Delete Messages</string>
+    <!-- Confirmation dialog on the History screen when deleting selected messages; %d = number of messages to delete; clarifies this does not delete them from the phone's SMS store -->
+    <plurals name="history_delete_confirm">
+        <item quantity="one">Delete %d selected message? This will not delete the message on the phone.</item>
+        <item quantity="other">Delete %d selected messages? This will not delete the messages on the phone.</item>
+    </plurals>
+
+    <!-- Import Dialog -->
+    <!-- Title of the bottom-sheet dialog where the user selects a time range for importing existing SMS from the phone -->
+    <string name="import_dialog_title">Import Messages</string>
+    <!-- Import dialog period rows: "Last …" wording of the shared period labels (period_*);
+         kept as separate strings because the "Last" prefix must inflect per language -->
+    <string name="import_timeframe_24h">Last 24 hours</string>
+    <string name="import_timeframe_7d">Last 7 days</string>
+    <string name="import_timeframe_30d">Last 30 days</string>
+    <string name="import_timeframe_90d">Last 90 days</string>
+    <!-- Radio option in the Import dialog to import all SMS messages regardless of age -->
+    <string name="import_timeframe_all">All time</string>
+    <!-- Radio option in the Import dialog that lets the user pick a custom start date from a date picker -->
+    <string name="import_timeframe_since">Import since…</string>
+    <!-- Button in the Import dialog that starts the import process for the selected time range, and the confirm button of the retention warning dialog -->
+    <string name="import_confirm">Import</string>
+    <!-- Toast shown when the user confirms "Import since…" without picking a date; the sheet stays open -->
+    <string name="import_pick_date_first">Pick a date first</string>
+    <!-- Toast shown when the user confirms "Import since…" with a date in the future; the sheet stays open -->
+    <string name="import_future_date">The date can\'t be in the future</string>
+    <!-- Title of the dialog that asks the user to confirm an import even though auto-clear will delete part of it -->
+    <string name="import_retention_title">Import anyway?</string>
+    <!-- Body of the retention confirm dialog; %1$s = the retention period label (e.g. "30 days") -->
+    <string name="import_retention_warning">Auto-clear is on: imported messages older than %1$s will be deleted.</string>
+
+    <!-- SMS Detail -->
+    <!-- Title of the confirmation dialog shown when the user taps the Delete button on a single SMS detail view -->
+    <string name="sms_detail_delete_message">Delete Message</string>
+    <!-- Body text in the delete confirmation dialog for a single message; clarifies that only the app's record is deleted, not the actual SMS on the phone -->
+    <string name="sms_detail_delete_confirm">Delete this message from history? This will not delete the message on the phone.</string>
+    <!-- Accessibility label for the cancel icon button on the SMS detail screen that parks an in-flight message as ignored (it moves to the History) -->
+    <string name="sms_detail_cancel_content_desc">Cancel sending</string>
+    <!-- Title of the SMS detail screen top bar (kept on the pre-content placeholder states so the back button stays reachable) -->
+    <string name="sms_detail_message_details">Message Details</string>
+    <!-- Label for the card that displays the full text content of the SMS message -->
+    <string name="sms_detail_message">Message</string>
+    <!-- Section heading on the SMS detail screen above the metadata fields (sender, date, SIM, status, etc.) -->
+    <string name="sms_detail_details">Details</string>
+    <!-- Label for the sender field on the SMS detail screen; shows the contact name if resolved, otherwise the phone number -->
+    <string name="sms_detail_from">From</string>
+    <!-- Label for the received timestamp field on the SMS detail screen -->
+    <string name="sms_detail_date">Received at</string>
+    <!-- Label for the SIM card field on the SMS detail screen; shown only on multi-SIM devices, displays the carrier name of the SIM that received the message -->
+    <string name="sms_detail_sim">SIM</string>
+    <!-- Value of the SIM card field when the tray slot is known: the carrier name plus the slot number, e.g. "Vodafone (SIM 1)" -->
+    <string name="sms_detail_sim_with_slot">%1$s (SIM %2$d)</string>
+    <!-- Label for the forwarding status field on the SMS detail screen (e.g. Forwarded, Pending, Failed, etc.) -->
+    <string name="sms_detail_status">Status</string>
+    <!-- Label for the forwarded-at timestamp field on the SMS detail screen; shown only for messages with SENT status -->
+    <string name="sms_detail_sent_at">Forwarded at</string>
+    <!-- Label for the error detail field on the SMS detail screen; shown for FAILED, RETRYING, or IGNORED messages with the specific error reason -->
+    <string name="sms_detail_status_details">Status Details</string>
+    <!-- Status detail text shown when a message has IGNORED status because SMS Forwarding was off when it arrived (the other IGNORED causes have their own detail strings) -->
+    <string name="sms_detail_ignored">SMS Forwarding was off when the message arrived</string>
+    <!-- Label for the retry count field on the SMS detail screen; shown for messages that have failed and been retried multiple times -->
+    <string name="sms_detail_retry_count">Retry Count</string>
+    <!-- Label for the timestamp of the last forward attempt on the SMS detail screen; shown for FAILED or RETRYING messages -->
+    <string name="sms_detail_last_attempt">Last forward attempt</string>
+    <!-- Label for the next scheduled retry timestamp on the SMS detail screen; shown for RETRYING messages -->
+    <string name="sms_detail_next_retry">Next Retry</string>
+    <!-- Shown under the Next Retry label with a countdown; %s = formatted remaining time until the next retry attempt -->
+    <string name="sms_detail_next_retry_in">in %s</string>
+    <!-- Shown under the Next Retry label when the countdown is under a threshold and the retry is imminent -->
+    <string name="sms_detail_next_retry_soon">Starting soon…</string>
+    <!-- Shown centered on the SMS detail screen when the message record no longer exists (deleted by auto-cleanup or a stale id) -->
+    <string name="sms_detail_no_longer_available">This message is no longer available</string>
+
+    <!-- User-friendly failure messages: send-error status details set by the workers, status details for parked messages, and toasts for blocked actions -->
+    <!-- Shown as the status detail for a RETRYING message when the device has no internet connection, as the offline SMTP test result, and as the offline manual-send and batch-worker failure reason (NetworkUtil.checkNetwork returns it) -->
+    <string name="error_waiting_for_internet">No Internet connection.</string>
+    <!-- Shown as the status detail for a RETRYING or FAILED message when the SMTP server did not respond in time, and as the SMTP connection test result when it times out -->
+    <string name="error_connection_timeout">Connection timed out.</string>
+    <!-- Shown as the status detail for a FAILED message, or as the SMTP test result, when the configured SMTP port is not a valid port (outside 1-65535) -->
+    <string name="error_invalid_smtp_port">Invalid SMTP port. Set a correct port and try again.</string>
+    <!-- Shown as the status detail for a FAILED message when the stored SMTP config is incomplete (e.g. a fresh install that never finished setup), so the message can never be sent -->
+    <string name="error_smtp_not_configured">SMTP is not configured. Complete the email setup in Settings, then forward the message again.</string>
+    <!-- Shown as the status detail for a FAILED message when it has exceeded the maximum retry period of 2 weeks -->
+    <string name="error_retry_period_exceeded">Retry period exceeded (2 weeks).</string>
+    <!-- Shown as the status detail for a FAILED message when the background send work could not be enqueued -->
+    <string name="error_worker_enqueue_failed">Failed to enqueue the send worker.</string>
+    <!-- Shown as the status detail for a RETRYING message when its previous send was interrupted (e.g. the process was killed mid-send) and the periodic recovery sweep picked it up again -->
+    <string name="sms_status_send_interrupted">Send was interrupted, retrying.</string>
+    <!-- Shown as the status detail for an IGNORED message that was waiting to be sent when the user turned SMS Forwarding off; it can be re-sent by hand from the detail screen -->
+    <string name="sms_status_forwarding_stopped">SMS Forwarding was turned off before sending</string>
+    <!-- Shown as the status detail for an IGNORED message parked by the user through the Queue's cancel-selected action, the Queue's Cancel All action, or the SMS detail's cancel button; it can be re-sent by hand from the detail screen -->
+    <string name="sms_status_cancelled_by_user">Canceled by user.</string>
+    <!-- Shown as a toast when cancelling could not take the single selected message — it is being sent or already moved to History -->
+    <string name="sms_cancel_blocked_single">Message is being sent or already moved to History.</string>
+    <!-- Shown as a toast when cancelling could not take several of the selected messages — they are being sent or already moved to History -->
+    <string name="sms_cancel_blocked_multiple">Messages are being sent or already moved to History.</string>
+    <!-- Shown as a toast when a manual send could not take the single selected message because its sending is already in progress -->
+    <string name="sms_forward_blocked_single">Message is already being sent.</string>
+    <!-- Shown as a toast when a manual send could not take several of the selected messages because their sending is already in progress -->
+    <string name="sms_forward_blocked_multiple">Messages are already being sent.</string>
+    <!-- Shown as a toast when the user taps a manual send (single, selected or all) while SMS Forwarding is turned off -->
+    <string name="sms_forward_forwarding_off">SMS Forwarding is off. Turn it on to send.</string>
+    <!-- Shown as a toast when a delete operation could not be completed (e.g. a database write failure) — a generic failure, the cause is logged -->
+    <string name="sms_delete_blocked">Something went wrong. Try again.</string>
+
+    <!-- Settings -->
+    <!-- Title of the Settings screen, and content description of the settings icon in the dashboard top bar -->
+    <string name="settings_title">Settings</string>
+    <!-- Toggle label in Settings that shows or hides the persistent notification while SMS forwarding is on -->
+    <string name="settings_sticky_notification">Sticky notification</string>
+    <!-- Description beneath the sticky-notification toggle explaining that the persistent notification is shown while forwarding is on -->
+    <string name="settings_sticky_notification_desc">Show the persistent notification while forwarding is on.</string>
+    <!-- Section heading in Settings for the email forwarding preferences (the email config card, the subject prefix, the include-time-in-email toggle, the Contacts sub-section and the SIM Cards sub-section), and title of the top bar of the email config edit screen -->
+    <string name="settings_section_forwarding">Forwarding Settings</string>
+    <!-- Label for the subject preview label in Settings, above the live preview of what a forwarded email subject will look like -->
+    <string name="settings_subject_preview">Subject preview</string>
+    <!-- Placeholder name shown in the subject preview when "Resolve Contacts" is enabled; represents what a resolved contact name would look like in the email subject -->
+    <string name="settings_subject_preview_sender">My Contact</string>
+    <!-- Placeholder phone number shown in the subject preview when "Resolve Contacts" is disabled; represents what an unresolved sender number would look like in the email subject -->
+    <string name="settings_subject_preview_phone">+1234</string>
+    <!-- Placeholder SIM suffix shown in the subject preview when "Display SIM Cards" is enabled; the subject template appends it with its own leading space, e.g. "on T-Mobile" -->
+    <string name="settings_subject_preview_carrier">on My SIM</string>
+    <!-- Toggle label in Settings Forwarding that adds the received time as the first line of the plain-text email body -->
+    <string name="settings_include_time_in_body">Include time in email</string>
+    <!-- Description beneath the toggle explaining that the time the message was received is added as the first line of the email body, rendered in the app's language and respecting the device's 12/24-hour format -->
+    <string name="settings_include_time_in_body_desc">Adds the time the message was received as the first line of the email. Shown in the app\'s language and respecting the device\'s 12/24-hour format.</string>
+    <!-- Toggle label for the "Resolve Contacts" feature - when enabled, the app looks up sender phone numbers in the device's contacts and shows the contact name in email subjects instead of the raw number -->
+    <string name="settings_resolve_contacts">Resolve Contacts</string>
+    <!-- Title of the country field under the Contacts section in Settings (the manual override of the auto-detected region the contact resolution normalizes local numbers with) -->
+    <string name="settings_country_title">Auto-set country</string>
+    <!-- Description beneath the country title explaining the field's format and what the auto mode detects -->
+    <string name="settings_country_desc">For numbers without a country code. Auto-detects it from the SIM, network, or device language; switch off to set a two-letter ISO code, e.g. DE.</string>
+    <!-- Label of the country code input in the country field -->
+    <string name="settings_country_code_label">Country code</string>
+    <!-- Error shown under the country code input when the manual code is not a valid ISO country code -->
+    <string name="settings_country_code_error">Unknown country code</string>
+    <!-- Toggle label in Settings that controls whether SIM card carrier names are shown in email subjects and message list (multi-SIM devices only) -->
+    <string name="settings_sim_name_resolution_title">Display SIM Cards</string>
+    <!-- Section heading in Settings for data retention preferences (auto-clear history) -->
+    <string name="settings_section_data_retention">Data Retention</string>
+    <!-- Toggle label in Settings that enables or disables the automatic deletion of old messages from the app's history -->
+    <string name="settings_cleanup_title">Auto-clear history</string>
+    <!-- Description beneath the auto-clear toggle explaining that messages will be deleted from history after a user-configurable number of days -->
+    <string name="settings_cleanup_desc">Automatically delete messages from history after a set number of days.</string>
+    <!-- Label of the number picker or spinner that sets the retention period in days for the auto-clear feature -->
+    <string name="settings_cleanup_retention_label">Retention period</string>
+    <!-- Retention period labels (dropdown, warning, history banner), named in days so they
+         read the same as the Import dialog's "Last …" rows -->
+    <string name="period_30_days">30 days</string>
+    <string name="period_90_days">90 days</string>
+    <string name="period_180_days">180 days</string>
+    <string name="period_1_year">1 year</string>
+    <string name="period_2_years">2 years</string>
+    <string name="period_5_years">5 years</string>
+    <!-- Value row of the retention period in the Settings screen while the row is locked (not in the edit mode); %s = the label of the stored period -->
+    <string name="settings_cleanup_period_value">Retention period: %s</string>
+    <!-- Title of the confirm dialog shown when the retention period is saved while the "Auto-clear history" enable is still pending (toggle on, period not yet saved) -->
+    <string name="settings_cleanup_enable_title">Enable auto-clear?</string>
+    <!-- Title of the confirm dialog shown when the retention period is saved shorter than the stored one -->
+    <string name="settings_cleanup_shorten_title">Shorten retention period?</string>
+    <!-- Affirmative button of the enable-auto-clear confirm dialog (matches its "Enable auto-clear?" title) -->
+    <string name="settings_cleanup_enable_confirm">Enable</string>
+    <!-- Affirmative button of the shorten-retention confirm dialog (matches its "Shorten retention period?" title) -->
+    <string name="settings_cleanup_shorten_confirm">Shorten</string>
+    <!-- Detail line of the retention confirm dialogs (enabling, shortening); %s = the label of the period the deletions will apply to -->
+    <string name="settings_cleanup_confirm_detail">Messages older than the selected retention period (%s) will be permanently deleted from the history. Messages not yet forwarded are kept until forwarded or failed.</string>
+    <!-- Hint under the retention period row while the enable is pending (the toggle is on but the period not saved yet) -->
+    <string name="settings_cleanup_enable_hint">Pick a period and tap Save to enable auto-clear.</string>
+    <!-- Info text shown after the user changes the retention period, indicating that the cleanup task will execute within the next 24 hours -->
+    <string name="settings_cleanup_will_run">Cleanup will run within 24 hours.</string>
+    <!-- Section header in the Settings screen above the recovery and wake-up rows -->
+    <string name="settings_section_scheduling">Scheduling</string>
+    <!-- Label of the recovery-sweep period dropdown in the Settings screen Scheduling section -->
+    <string name="settings_stuck_recovery">Stuck message recovery</string>
+    <!-- Explanation under the recovery-sweep dropdown: what the sweep does and does not do, and what Off means -->
+    <string name="settings_stuck_recovery_desc">New messages are forwarded as they arrive; this background check only re-sends messages that got stuck when the app was killed mid-send. It never scans your inbox. Shorter = faster recovery, longer = fewer device wakes. Off disables the check (a message stuck mid-send would stay stuck).</string>
+    <!-- Options of the recovery-sweep period dropdown (ascending; Off is the 0 state) -->
+    <string name="settings_sweep_interval_15min">15 minutes</string>
+    <string name="settings_sweep_interval_1h">1 hour</string>
+    <string name="settings_sweep_interval_6h">6 hours</string>
+    <string name="settings_sweep_interval_12h">12 hours</string>
+    <string name="settings_sweep_interval_24h">24 hours</string>
+    <!-- Label and description of the exact-wake-up toggle in the Settings screen Scheduling section -->
+    <string name="settings_exact_wake_title">Exact wake-up (experimental)</string>
+    <string name="settings_exact_wake_desc">Wake the device with an exact alarm instead of the system\'s deferred scheduler, which can be delayed by aggressive OEM battery optimization. For best results, allow unrestricted battery usage and grant the Alarms &amp; reminders permission (Android 12+). The deferred scheduler remains active as a backup.</string>
+
+    <!-- Message filter (Settings Advanced section toggle, summary card and the filter edit screen) -->
+    <!-- The message-filter feature toggle in the Advanced section: the explicit opt-in for the regex filter -->
+    <string name="settings_message_filtering">Message filtering</string>
+    <!-- The toggle's description: states the regex nature and what "off" means, so the user enables it knowingly -->
+    <string name="settings_message_filtering_desc">Filter incoming messages by regular expression before forwarding. While off, every message is forwarded.</string>
+    <!-- Title of the filter edit screen top bar (the filter itself lives in the Settings Advanced section, and its summary card has no such title) -->
+    <string name="settings_filter_title">Message filter</string>
+    <!-- Label of the mode pick in the filter edit screen -->
+    <string name="settings_filter_mode_label">Mode</string>
+    <!-- Mode option: the blocklist polarity (a rule hit skips the message, everything else forwards) -->
+    <string name="settings_filter_mode_skip">Skip matching</string>
+    <!-- The mode pick\'s subtitle in skip mode: the baseline stated, not left to the option name -->
+    <string name="settings_filter_mode_skip_hint">Matching messages are skipped; everything else is forwarded</string>
+    <!-- Mode option: the allowlist polarity (a rule hit forwards the message, everything else is skipped) -->
+    <string name="settings_filter_mode_forward">Forward matching</string>
+    <!-- The mode pick\'s subtitle in forward mode: the baseline stated, not left to the option name -->
+    <string name="settings_filter_mode_forward_hint">Only matching messages are forwarded; everything else is skipped</string>
+    <!-- The summary card\'s line while no rule is active (the filter is off; everything forwards) -->
+    <string name="settings_filter_off">No rules configured — everything is forwarded</string>
+    <!-- The summary card\'s header line in skip mode: the rule lines below are what gets skipped -->
+    <string name="settings_filter_card_skip">Skips messages that match:</string>
+    <!-- The summary card\'s header line in forward mode: the rule lines below are what gets forwarded -->
+    <string name="settings_filter_card_forward">Forwards only messages that match:</string>
+    <!-- The body facet of a rule line, the pattern quoted (matched exactly as written); %1$s = the pattern -->
+    <string name="settings_filter_card_body">body matches \"%1$s\"</string>
+    <!-- The sender facet of a rule line, the pattern quoted (matched against the stored phone number); %1$s = the pattern -->
+    <string name="settings_filter_card_sender">sender number matches \"%1$s\"</string>
+    <!-- The slot facet of a rule line; %1$s = "SIM N" for one slot, the "(SIM 1 OR 2)" group for several -->
+    <string name="settings_filter_card_slots">received on %1$s</string>
+    <!-- The wrapper of several SIM slots in a summary card rule line; %1$s = the slot numbers joined with " OR ", e.g. "1 OR 2" -->
+    <string name="settings_filter_slots_group">(SIM %1$s)</string>
+    <!-- The body facet\'s field label in the filter edit screen: the regex nature stated up front -->
+    <string name="settings_filter_body">Body (regex)</string>
+    <!-- The sender facet\'s field label in the filter edit screen: the regex nature stated up front -->
+    <string name="settings_filter_sender">Sender number (regex)</string>
+    <!-- The caption above the rule cards: what the facet fields are and how they match -->
+    <string name="settings_filter_regex_hint">Regular expressions, matched anywhere in the text, case-sensitive. Use (?i) to ignore case.</string>
+    <!-- The joiner of the facets inside one rule line of the summary card (every listed facet must hold) -->
+    <string name="settings_filter_and">AND</string>
+    <!-- The separator line between the rules of the summary card (the rules are OR\'d) -->
+    <string name="settings_filter_or">OR</string>
+    <!-- Button that appends a new rule card in the filter edit screen -->
+    <string name="settings_filter_add_rule">Add rule</string>
+    <!-- Accessibility label of the remove button of a rule card in the filter edit screen (top-right of the card) -->
+    <string name="settings_filter_remove_rule">Remove rule</string>
+    <!-- The summary card\'s line for a saved rule with no active facet (reachable via import only; the predicate ignores it) -->
+    <string name="settings_filter_no_conditions">no conditions</string>
+    <!-- Label of a slot checkbox entry in the filter edit screen, and of the slot numbers of the summary card\'s rule line; %1$d = the tray number -->
+    <string name="settings_filter_slot">SIM %1$d</string>
+    <!-- Title of the sample box of the filter edit screen: the sample evaluated against the draft -->
+    <string name="settings_filter_try_title">Test the filter</string>
+    <!-- The sample body field of the \"Try it\" box -->
+    <string name="settings_filter_try_body">Sample body</string>
+    <!-- The sample sender field of the \"Try it\" box (evaluated against the sender facet, as the stored phone number) -->
+    <string name="settings_filter_try_sender">Sample sender</string>
+    <!-- The \"Try it\" verdict while the draft\'s filter skips the sample -->
+    <string name="settings_filter_try_skip">Skipped by this filter</string>
+    <!-- The \"Try it\" verdict while the draft\'s filter lets the sample through -->
+    <string name="settings_filter_try_forward">Would be forwarded</string>
+    <!-- The label above the live preview of the summary card in the filter edit screen (the draft as it will render in Settings) -->
+    <string name="settings_filter_preview_label">Preview</string>
+    <!-- The status detail of a row the skip-mode filter parked (the message matched a rule) -->
+    <string name="settings_filter_status_skipped">Skipped by filter</string>
+    <!-- The status detail of a row the forward-mode filter parked (the message matched no rule) -->
+    <string name="settings_filter_status_no_match">Does not match filter rules</string>
+    <!-- The manual-forward toast of the rows the skip-mode filter skipped; %1$d = the skipped count, standing alone (the inflection-neutral shape) -->
+    <string name="settings_filter_toast_skipped">Skipped by filter: %1$d</string>
+    <!-- The manual-forward toast of the rows the forward-mode filter skipped; %1$d = the skipped count, standing alone (the inflection-neutral shape) -->
+    <string name="settings_filter_toast_no_match">Skipped: %1$d — does not match filter rules</string>
+    <!-- The live error of a filter facet field whose text does not compile as a regular expression, and the save-gate toast for it (the hint names the usual suspects) -->
+    <string name="settings_filter_invalid_regex">Invalid regular expression — check parentheses and special characters</string>
+    <!-- The live error of a filter facet field past the UTF-8 byte cap, and the save-gate toast for it; %1$d = the cap (AppConfig.FILTER_FACET_MAX_BYTES) -->
+    <string name="settings_filter_too_long" tools:ignore="PluralsCandidate">Too long (max %1$d bytes)</string>
+
+    <!-- App logs (Settings section and the log viewer screen) -->
+    <!-- Title of the App logs screen top bar, and of the App logs section header in Settings above the Open logs row -->
+    <string name="log_viewer_title">App logs</string>
+    <!-- Label of the log level dropdown in the App logs section of Settings -->
+    <string name="settings_log_level_label">Log level</string>
+    <!-- Description beneath the log level dropdown: the picked level is the lightest one still recorded, the more verbose ones are skipped, Off records nothing -->
+    <string name="settings_log_level_desc">Only entries at this level or more severe are recorded; the more verbose ones are skipped. Off records nothing.</string>
+    <!-- The log level dropdown options, ascending severity, Off last -->
+    <string name="log_level_debug">Debug</string>
+    <string name="log_level_info">Info</string>
+    <string name="log_level_warning">Warning</string>
+    <string name="log_level_error">Error</string>
+    <!-- Toggle label in Settings that enables or disables saving log entries to the app's log file -->
+    <string name="settings_log_to_file_title">Log to file</string>
+    <!-- Description beneath the log-to-file toggle explaining that log entries are also written to a file the user can export -->
+    <string name="settings_log_to_file_desc">Also save log entries to a file so the full history can be exported.</string>
+    <!-- Label of the dropdown that sets the maximum size of the log file -->
+    <string name="settings_log_size_label">Max log size</string>
+    <!-- Value row of the log file size in the Settings screen while the row is locked (not in the edit mode); %s = the label of the stored size -->
+    <string name="settings_log_size_value">Max log size: %s</string>
+    <!-- Hint under the log size row while the enable is pending (the toggle is on but the size not saved yet) -->
+    <string name="settings_log_to_file_hint">Pick a size and tap Save to enable log to file.</string>
+    <!-- Title of the confirm dialog shown when a smaller log file size is saved; the file is truncated to the new cap -->
+    <string name="settings_log_to_file_shrink_title">Reduce log size?</string>
+    <!-- Affirmative button of the reduce-log-size confirm dialog -->
+    <string name="settings_log_to_file_shrink_confirm">Reduce</string>
+    <!-- Detail line of the reduce-log-size confirm dialog; %s = the label of the size the file will be truncated to -->
+    <string name="settings_log_to_file_shrink_detail">The log file will be truncated to the last %s.</string>
+    <!-- Title of the confirm dialog shown when the log-to-file toggle is turned off; the file is deleted -->
+    <string name="settings_log_to_file_disable_title">Turn off log to file?</string>
+    <!-- Affirmative button of the turn-off-log-to-file confirm dialog -->
+    <string name="settings_log_to_file_disable_confirm">Turn off</string>
+    <!-- Detail line of the turn-off-log-to-file confirm dialog; the log file is deleted with the setting -->
+    <string name="settings_log_to_file_disable_detail">The log file will be deleted. Save it to a file first if you want to keep a copy.</string>
+    <!-- Log file size labels (dropdown, locked row); the same labels the size editor offers -->
+    <string name="log_size_64kb">64 KB</string>
+    <string name="log_size_256kb">256 KB</string>
+    <string name="log_size_1mb">1 MB</string>
+    <string name="log_size_4mb">4 MB</string>
+    <string name="log_size_16mb">16 MB</string>
+    <!-- Label of the "Open logs" row in the App logs section of the Settings screen; tapping it opens the App logs screen -->
+    <string name="settings_logs">Open logs</string>
+    <!-- "Copy" button label in the App logs top bar (copies the filtered log to the clipboard) -->
+    <string name="log_viewer_copy">Copy</string>
+    <!-- Toast shown after copying log lines to the clipboard on the App logs screen -->
+    <string name="log_viewer_copied">Copied to clipboard</string>
+    <!-- Label for the search field in the Log Viewer -->
+    <string name="log_viewer_search">Search</string>
+    <!-- Placeholder text in the Log Viewer search field -->
+    <string name="log_viewer_search_hint">Search log messages</string>
+    <!-- Empty state text shown in the Log Viewer when no logs have been captured yet -->
+    <string name="log_viewer_empty">No logs captured yet</string>
+    <!-- Empty state text shown in the Log Viewer when the search query returns no matching log entries -->
+    <string name="log_viewer_no_match">No logs match the search query.</string>
+    <!-- "Save to file" button label in the App logs banner (saves the app's full log file to a file the user picks in the system picker) -->
+    <string name="log_viewer_export">Save to file</string>
+    <!-- Toast shown after the log text was written to the destination the user picked -->
+    <string name="log_viewer_exported">Logs saved</string>
+    <!-- Toast shown when writing the log text to the destination the user picked failed -->
+    <string name="log_viewer_export_failed">Failed to save logs</string>
+    <!-- Toast shown when the Save to file button is tapped while the log-to-file setting is off (the button is dimmed, there is no file to save) -->
+    <string name="log_viewer_enable_toast">Enable logging to file first</string>
+    <!-- "Clear" button label in the App logs top bar (wipes the in-memory log and the log file), and confirm button of the clear-logs confirmation dialog -->
+    <string name="log_viewer_clear">Clear</string>
+    <!-- Title of the clear-logs confirmation dialog -->
+    <string name="log_viewer_clear_title">Clear logs?</string>
+    <!-- Body text in the clear-logs confirmation dialog; warns that the action is irreversible -->
+    <string name="log_viewer_clear_confirm">Delete all app logs? This cannot be undone.</string>
+    <!-- Title of the info banner at the top of the App logs screen; states that the on-screen view is limited -->
+    <string name="log_viewer_banner_title">Limited view</string>
+    <!-- Description of the info banner at the top of the App logs screen; %1$d = the in-memory buffer cap (AppConfig.LOG_MAX_ENTRIES); explains the viewing limits (UTC timestamps, newest first) and how to get the full history: enable log-to-file in Settings and save to file. No size cap here: while the setting is off there is no file to state a cap for, and the cap is named in Settings anyway -->
+    <string name="log_viewer_banner_desc" tools:ignore="PluralsCandidate">The viewer keeps the newest %1$d records and shows them newest first. Timestamps are in UTC. If you want to read the entire log, make sure log-to-file is enabled and tap Save to file.</string>
+
+    <!-- About (Settings screen) -->
+    <!-- Section header at the bottom of the Settings screen above the version row and the GitHub link rows -->
+    <string name="settings_section_about">About</string>
+    <!-- Title of the version row (the first item) in the Settings About section; the version renders as the small text under the title -->
+    <string name="settings_version_title">Version</string>
+    <!-- Title of the source-code row in the Settings About section (opens the GitHub repository) -->
+    <string name="settings_about_source_code">Source code</string>
+    <!-- Title of the bug row in the Settings About section (opens the new-issue page of the GitHub repository without a pre-selected type) -->
+    <string name="settings_about_report_bug">Report a bug</string>
+    <!-- Title of the sponsor row in the Settings About section (opens the Buy Me a Coffee page), and text of the sponsor link shown after the cards in the Dashboard that opens the same page -->
+    <string name="settings_about_donation">Buy the developer a coffee</string>
+    <!-- Hint under the sponsor row in the Settings About section, suggesting starring the repository as a free alternative to donating -->
+    <string name="settings_about_donation_hint">Can\'t donate? Star the repository on GitHub.</string>
+
+    <!-- Send Confirmation -->
+    <!-- Title of the confirmation dialog shown when the user initiates a send action on selected messages -->
+    <string name="forward_messages_title">Send Messages</string>
+    <!-- Body text of the send confirmation dialog shown from the History and Queue screens; %d = number of selected messages to send now -->
+    <plurals name="forward_messages_confirm">
+        <item quantity="one">Send %d selected message now?</item>
+        <item quantity="other">Send %d selected messages now?</item>
+    </plurals>
+
+    <!-- Common -->
+    <!-- Wraps a feature or permission name to indicate it is optional; %s = the name (e.g. "Contacts", "Phone", "Recipient Name", "Sender Name") -->
+    <string name="optional_suffix">%s (Optional)</string>
+    <!-- Wraps a feature or permission name to indicate it is recommended (not required); %s = the feature name (e.g. "Notifications", "Background Battery Usage", the auto-reset row) -->
+    <string name="recommended_suffix">%s (Recommended)</string>
+    <!-- The Setup Wizard bottom bar button label that advances to the next wizard step (the last step shows Done instead) -->
+    <string name="action_next">Next</string>
+    <!-- Generic "Back" button label: the top-bar back arrow on the main screens (its accessibility label) and the Setup Wizard's bottom-bar back button -->
+    <string name="action_back">Back</string>
+    <!-- Generic "Done" button label used to complete a multi-step flow or dismiss a configuration dialog -->
+    <string name="action_done">Done</string>
+    <!-- Generic "Cancel" button label used to dismiss dialogs or abort an in-progress action -->
+    <string name="action_cancel">Cancel</string>
+    <!-- Generic "Close" button label used to dismiss a screen or dialog -->
+    <string name="action_close">Close</string>
+    <!-- Generic "Send" action label for messages: the multi-select bar button on the Queue and History screens, the send confirmation dialogs' confirm button, and the SMS detail screen's send icon accessibility label -->
+    <string name="action_send">Send</string>
+    <!-- Generic "Yes" confirm button label for dialogs whose question already names the action (the Queue's cancel dialogs, the Setup Wizard launch dialog) -->
+    <string name="action_yes">Yes</string>
+    <!-- Generic "Delete" button label: the confirm button of the History delete-selected and the single-SMS detail delete dialogs, and the SMS detail screen's delete icon accessibility label -->
+    <string name="action_delete">Delete</string>
+    <!-- Generic "Save" button label: the retention period and log size editors (the shared DropdownEditorRow), the email config edit screen and the filter edit screen -->
+    <string name="action_save">Save</string>
+    <!-- Generic "Edit" button label: re-opens the retention period and log size editors (the shared DropdownEditorRow) while the row is locked, and the edit button of the email config summary card and the filter summary row -->
+    <string name="action_edit">Edit</string>
+    <!-- Generic "Off" option of the settings dropdowns (the recovery-sweep period, the log level) -->
+    <string name="option_off">Off</string>
+    <!-- Duration format with days, hours, minutes, and seconds used in the retry countdown timers; %d values are days, hours, minutes, seconds respectively -->
+    <string name="duration_days" formatted="false">%dd %dh %dm %ds</string>
+    <!-- Duration format with hours, minutes, and seconds used in the retry countdown timers; %d values are hours, minutes, seconds respectively -->
+    <string name="duration_hours" formatted="false">%dh %dm %ds</string>
+    <!-- Duration format with minutes and seconds used in the retry countdown timers; %d values are minutes, seconds respectively -->
+    <string name="duration_minutes" formatted="false">%dm %ds</string>
+    <!-- Duration format with seconds only used in the retry countdown timers; %d is the number of seconds -->
+    <string name="duration_seconds" formatted="false">%ds</string>
+    <!-- Shown in the bottom action bar when the user has selected one or more messages in multi-select mode; %d = number of selected messages; shared by the Queue and History screens -->
+    <string name="selection_count" tools:ignore="PluralsCandidate">%d selected</string>
+    <!-- Toast shown when multi-select is cancelled automatically because a selected message left the list (delivered, failed, or deleted) while it was selected; shared by the Queue and History screens -->
+    <string name="selection_cleared">Selection was cleared because some messages changed</string>
+    <!-- Toast shown when multi-select is cancelled because the user edited or cleared the search while selecting; shared by the Queue and History screens -->
+    <string name="selection_cleared_search">Selection was cleared because the search changed</string>
+    <!-- Fallback sender for messages whose originating address is null or blank (some service codes); shown in the UI and the email subject -->
+    <string name="sms_unknown_sender">Unknown sender</string>
+    <!-- Toast shown after the email config is saved from the Settings screen and after the message filter is saved from the filter edit screen -->
+    <string name="settings_saved">Settings saved</string>
+
+    <!-- Advanced (Settings screen) -->
+    <!-- Section heading in Settings for the advanced features: the message filtering toggle, the PDU timestamp toggle, the duplicate protection dropdown and the JSON email format toggle (logging lives in its own "App logs" section) -->
+    <string name="settings_section_advanced">Advanced</string>
+    <!-- Toggle label in Settings that switches the stored receive time from the device arrival time to the carrier's PDU service-center timestamp -->
+    <string name="settings_pdu_timestamp">Use carrier timestamp</string>
+    <!-- Description beneath the PDU timestamp toggle explaining that the carrier network receive time is stored instead of the device arrival time, and that this filters out re-sends -->
+    <string name="settings_pdu_timestamp_desc">Uses the network\'s received time (PDU timestamp) to prevent message re-deliveries (common while roaming). Recommended only if you are experiencing re-deliveries. If you turn this on, be sure to enable duplicate protection as well (Aggressive recommended), or device imports will result in duplicate messages.</string>
+    <!-- Dropdown label in Settings for the duplicate protection level -->
+    <string name="settings_dedup_level_label">Duplicate protection</string>
+    <!-- Description beneath the duplicate protection dropdown explaining that identical texts from the same sender within a time window are ignored -->
+    <string name="settings_dedup_level_desc">Filters out identical messages from the same sender received within a chosen time window. When off, only exact timestamp matches are filtered out.</string>
+    <!-- Duplicate protection level option: the 60-second window -->
+    <string name="settings_dedup_level_aggressive">Aggressive (60s)</string>
+    <!-- Duplicate protection level option: the 10-second window -->
+    <string name="settings_dedup_level_balanced">Balanced (10s)</string>
+    <!-- Duplicate protection level option: the 3-second window -->
+    <string name="settings_dedup_level_minimal">Minimal (3s)</string>
+    <!-- Duplicate protection level option: dedup only on an exact timestamp match (weakest, not recommended) -->
+    <string name="settings_dedup_level_off">Off (not recommended)</string>
+    <!-- Toggle label in Settings that switches the email body format from plain text to structured JSON, intended for automated downstream processing -->
+    <string name="settings_json_email_format">JSON Email Format</string>
+    <!-- Description beneath the JSON format toggle explaining that it sends SMS data as structured JSON instead of human-readable plain text, for use with automated systems -->
+    <string name="settings_json_email_format_desc">Send SMS content as structured JSON instead of plain text. Intended for automated processing.</string>
+
+    <!-- Settings Export/Import -->
+    <!-- Section heading in Settings for the settings export/import feature, used to migrate configuration to a new device -->
+    <string name="settings_section_migration">Device Migration</string>
+    <!-- Info text shown under the Device Migration section header, explaining what is and isn't included in the export (SMTP password and messages are excluded) -->
+    <string name="settings_section_migration_note">Exports only app settings. The SMTP password and messages are not included.</string>
+
+    <!-- Config export/import (shared by the onboarding wizard and the settings screen) -->
+    <!-- Button that exports the app's current configuration to a JSON file (excludes SMTP password and message history) -->
+    <string name="config_export">Export Settings</string>
+    <!-- Toast shown after settings are successfully exported to a file -->
+    <string name="config_export_success">Settings exported successfully</string>
+    <!-- Toast shown when the settings export fails -->
+    <string name="config_export_failed">Failed to export settings</string>
+    <!-- Button that opens a file picker to import a previously exported settings JSON file, pre-filling the form -->
+    <string name="config_import">Import Settings</string>
+    <!-- Toast shown after settings are successfully imported from a file; warns that the export never contains the SMTP password, so a cross-account import keeps the stored password -->
+    <string name="config_import_success">Settings imported. The SMTP password is not included in exports. Set it if this is a different account.</string>
+    <!-- Toast shown when the settings import fails due to an invalid or corrupted file (or a picked file that is too large) -->
+    <string name="config_import_failed">Failed to import settings. Invalid file.</string>
+
+    <!-- App startup -->
+    <!-- Text of the dialog shown when the encrypted settings cannot be opened (unreadable file/keyset or an unavailable keystore): the app cannot read or save settings, so the only remedies are restarting the phone, or resetting the app's data / reinstalling -->
+    <string name="encrypted_prefs_error_message">Your settings can\'t be opened right now. Restart your phone and try again; if that doesn\'t help, reset the app\'s data or reinstall it.</string>
+
+</resources>
